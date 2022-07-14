@@ -1,3 +1,6 @@
+import { Notify } from 'notiflix';
+import 'notiflix/dist/notiflix-3.2.5.min.css';
+
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -23,10 +26,10 @@ const formSubmitHandler = event => {
 
     createPromise(i + 1, currentDelay)
       .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
 };
